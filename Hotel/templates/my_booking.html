@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<br />
+<div class="row">
+                {% for room in approved_data %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Room No:{{ room[1] }}</h5>
+                            <span class="text-danger">Check in date : {{room[3]}}</span><br />
+                            <span class="text-success">Check out date : {{room[4]}}</span><br />
+                        </div>
+                        <form action="" method="POST">
+                          <p class="nav-link"><input type="submit" class="btn btn-success" value="APPROVED"></p>
+                         </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+   <div class="row">
+                   {% for room in book_data %}
+                   <div class="col-lg-3 col-md-4 col-sm-6">
+                       <div class="card mb-4">
+                           <div class="card-body">
+                               <h5 class="card-title">Room No:{{ room[1] }}</h5>
+                               <h4>৳{{ room[3] }}</h4>
+                               <span class="text-danger">Check in date : {{room[3]}}</span><br />
+                               <span class="text-success">Check out date : {{room[4]}}</span><br />
+                           </div>
+                           <form action="/cancel_book" method="POST">
+                             <input type="text" name="book_id" value={{room[0]}} style="display:none">
+                             <p class="nav-link"><input type="submit" class="btn btn-danger" value="CANCEL BOOKING"></p>
+                            </form>
+                       </div>
+                   </div>
+                   {% endfor %}
+               </div>
+{% endblock %}

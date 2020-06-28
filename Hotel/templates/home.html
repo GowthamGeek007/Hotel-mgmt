@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>HOTEL CODA </h1>
+{% if session.logged_in %}
+<h3> Welcome {{session.username }}</h3>
+{% endif %}
+      <form action="/check_room" method="POST">
+        Check_in date<br /><input type="date" name="check_in" value=""><br><br>
+        Check_out date<br /><input type="date" name="check_out" value=""><br><br>
+        <p class="nav-link"><input type="submit" class="btn btn-primary" value="CHECK ROOMS"></p>
+      </form>
+
+      <form action="/check_room_ac" method="POST" style="display:none">
+        <select name="ac" class="form-group">
+          <option value="0">Non-A/c</option>
+          <option value="1">A/c</option>
+        </select><br />
+        <select name="wifi" class="form-group">
+          <option value="0">No-Wifi</option>
+          <option value="1">Wifi</option>
+        </select><br />
+        <p class="nav-link"><input type="submit" class="btn btn-primary" value="CHECK ROOMS"></p>
+      </form>
+
+
+<div class="row">
+  {% for room in data %}
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Room No:{{ room[0] }}</h5>
+        <h4>৳{{ room[3] }}</h4>
+        <span class="text-danger">Room Type : {{room[8]}}</span><br /><br />
+        <span class="text-success">Bed Facility : {{room[2]}}</span><br />
+        <span class="text-success">A/C Facility : {% if room[1]==0  %}No{%else%}Yes{%endif%}</span><br />
+        <span class="text-success">Wifi Facility : {% if room[4]==0  %}No{%else%}Yes{%endif%}</span>
+      </div>
+      {%if room[6]==1%}
+      <p class="nav-link"><input type="submit" class="btn btn-danger" value="UNDER SERVICE"></p>
+
+      {%elif room[10]<=0%}
+      <p class="nav-link"><input type="submit" class="btn btn-danger" value="ROOM UNAVAILABLE"></p>
+      {%else%}
+      <form action="/room_book" method="POST">
+        <input type="text" name="room_no" value={{room[0]}} style="display:none">
+        <p class="nav-link"><input type="submit" class="btn btn-primary" value="BOOK"></p>
+      </form>
+      {%endif%}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

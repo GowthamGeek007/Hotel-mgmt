@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <br><br>
+  <h1>ADMIN LOGIN</h1><br>
+  <form action="" method="POST"  autocomplete="off">
+    <div class="form-group">
+      <input type="text" name="admin_id" placeholder="Admin Id" value={{request.form.admin_id}}><br><br>
+      <input type="password" name="password"  placeholder="Password" value={{request.form.password}}><br>
+    </div>
+    <input type="submit" class="btn btn-primary" value="LOGIN">
+  </form>
+{% endblock %}

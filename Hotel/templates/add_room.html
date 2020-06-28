@@ -1,0 +1,32 @@
+{% extends 'admin_layout.html' %}
+
+{% block body %}
+
+<h1>ROOM</h1><br>
+<form action="" method="POST">
+  <div class="form-group">
+    <input type="text" name="room_no" placeholder="Room No" value={{request.form.room_no}}><br><br>
+    <select name="ac" class="form-group">
+        <option value="0">Non-A/c</option>
+        <option value="1">A/c</option>
+    </select><br />
+    <input type="number" name="bed" placeholder="Bed Count" value={{request.form.description}}><br><br>
+    <input type="text" name="price"  placeholder="Price" value={{request.form.price}}><br><br>
+    <select name="wifi" class="form-group">
+        <option value="0">Non-Wifi</option>
+        <option value="1">Wifi</option>
+    </select><br />
+    <select name="room_type" class="form-group">
+        <option value="" disabled selected>Room type</option>
+        <option value="1">Single</option>
+        <option value="2">Double</option>
+        <option value="3">Triple</option>
+        <option value="4">Quad</option>
+        <option value="5">Queen</option>
+        <option value="6">King</option>
+    </select><br />
+  </div>
+  <input type="submit" class="btn btn-primary" value="ADD">
+</form>
+
+{% endblock %}

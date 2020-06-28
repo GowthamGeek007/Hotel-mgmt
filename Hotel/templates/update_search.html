@@ -1,0 +1,13 @@
+{% extends 'admin_layout.html' %}
+
+{% block body %}
+
+<h1>SEARCH ROOM</h1><br>
+<form action="" method="POST">
+  <div class="form-group">
+    <input type="text" name="room_no" placeholder="Room no" value={{request.form.description}}><br><br>
+
+  <input type="submit" class="btn btn-primary" value="SEARCH">
+</form>
+
+{% endblock %}

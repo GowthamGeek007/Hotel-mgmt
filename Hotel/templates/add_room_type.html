@@ -1,0 +1,14 @@
+{% extends 'admin_layout.html' %}
+
+{% block body %}
+
+<h1>ROOM TYPE</h1><br>
+<form action="" method="POST">
+  <div class="form-group">
+    <input type="text" name="type_id" placeholder="Type Id" value={{request.form.type_id}}><br><br>
+    <input type="text" name="type_name" placeholder="Type Name" value={{request.form.type_name}}><br><br>
+  </div>
+  <input type="submit" class="btn btn-primary" value="ADD">
+</form>
+
+{% endblock %}

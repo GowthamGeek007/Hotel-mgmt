@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+   <h1>HOTEL CODA </h1>
+   <div class="card" style="width: 18rem;">
+     <img src="{{ url_for('static', filename='img/coda.png') }}" class="card-img-top" alt="">
+     <div class="card-body">
+       <h3 class="card-title">{{session.username}}</h3>
+     </div>
+     <ul class="list-group list-group-flush">
+       <li class="list-group-item">User id : {{data[0]}}</li>
+       <li class="list-group-item">Phone : {{data[3]}}</li>
+       <li class="list-group-item" style="padding-bottom:20px">Email : {{data[4]}}</li>
+     </ul>
+   </div>
+{% endblock %}

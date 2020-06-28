@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>ROOM BOOK</h1><br>
+
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Room No:{{ room_data[0] }}</h5>
+            <h4>৳{{ room_data[3] }}</h4>
+            <span class="text-danger">Bed Facility : {{room_data[2]}}</span><br /><br />
+            <span class="text-success">A/C Facility : {% if room_data[1]==0  %}No{%else%}Yes{%endif%}</span><br />
+            <span class="text-success">Wifi Facility : {% if room_data[4]==0  %}No{%else%}Yes{%endif%}</span>
+        </div>
+    </div>
+</div>
+
+<form action="booking_room" method="POST">
+  <div class="nav-link">
+  <div class="form-group">
+    User Id<br><input type="text" name="user_id"  value={{ user_data[0] }} disabled><br><br>
+    Name<br><input type="text" name="name"  value={{ user_data[1] }} disabled><br><br>
+    Phno<br><input type="text" name="phno"  value={{ user_data[3] }} disabled><br><br>
+    Email<br><input type="text" name="email"  value={{ user_data[4] }} disabled><br><br>
+    Check_in date<br /><input type="date" name="check_in"  value="" ><br><br>
+    Check_out date<br /><input type="date" name="check_out"  value="" ><br><br>
+
+
+    <input type="text" name="user_id"  value={{ user_data[0] }} style="display:none">
+    <input type="text" name="room_no"  value={{ room_data[0] }} style="display:none">
+
+
+  <input type="submit" class="btn btn-primary" value="REQUEST BOOKING">
+</form>
+</div>
+</div>
+
+
+{% endblock %}
